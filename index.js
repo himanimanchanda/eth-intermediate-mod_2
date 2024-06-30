@@ -60,7 +60,7 @@ export default function HomePage() {
 
   const deposit = async () => {
     if (atm) {
-      let tx = await atm.deposit(45);
+      let tx = await atm.deposit(50); // Changed deposit amount to 50 ETH
       await tx.wait();
       getBalance();
     }
@@ -68,7 +68,7 @@ export default function HomePage() {
 
   const withdraw = async () => {
     if (atm) {
-      let tx = await atm.withdraw(30);
+      let tx = await atm.withdraw(16); // Changed withdrawal amount to 16 ETH
       await tx.wait();
       getBalance();
     }
@@ -93,8 +93,8 @@ export default function HomePage() {
       <div>
         <p>Your Account: {account}</p>
         <p>Your Balance: {balance}</p>
-        <button onClick={deposit}>Deposit 45 ETH</button>
-        <button onClick={withdraw}>Withdraw 30 ETH</button>
+        <button onClick={deposit}>Deposit 50 ETH</button>
+        <button onClick={withdraw}>Withdraw 16 ETH</button>
       </div>
     );
   }
@@ -103,12 +103,12 @@ export default function HomePage() {
 
   return (
     <main className="container">
-      <header><h1>Your Ethermancer ATM Awaits!</h1></header>
+      <header><h1>Digital Decentralized Banking Service</h1></header>
       {initUser()}
       <style jsx>{`
         .container {
           text-align: center;
-          background-color: #F39C12;
+          background-color: #16A085 ; /* Changed background color here */
           height: 100vh;
           display: flex;
           flex-direction: column;
