@@ -9,6 +9,7 @@ contract Assessment {
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
+    event Purchase(string item, uint256 amount);
 
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
@@ -56,5 +57,50 @@ contract Assessment {
 
         // emit the event
         emit Withdraw(_withdrawAmount);
+    }
+
+    // Function to buy handgloves
+    function buyHandgloves(uint256 _amount) public {
+        require(msg.sender == owner, "You are not the owner of this account");
+        require(balance >= _amount, "Insufficient balance to buy handgloves");
+
+        uint _previousBalance = balance;
+        balance -= _amount;
+
+        // assert balance is correctly updated
+        assert(balance == (_previousBalance - _amount));
+
+        // emit the purchase event
+        emit Purchase("Handgloves", _amount);
+    }
+
+    // Function to buy caps
+    function buyCaps(uint256 _amount) public {
+        require(msg.sender == owner, "You are not the owner of this account");
+        require(balance >= _amount, "Insufficient balance to buy caps");
+
+        uint _previousBalance = balance;
+        balance -= _amount;
+
+        // assert balance is correctly updated
+        assert(balance == (_previousBalance - _amount));
+
+        // emit the purchase event
+        emit Purchase("Caps", _amount);
+    }
+
+    // Function to buy socks
+    function buySocks(uint256 _amount) public {
+        require(msg.sender == owner, "You are not the owner of this account");
+        require(balance >= _amount, "Insufficient balance to buy socks");
+
+        uint _previousBalance = balance;
+        balance -= _amount;
+
+        // assert balance is correctly updated
+        assert(balance == (_previousBalance - _amount));
+
+        // emit the purchase event
+        emit Purchase("Socks", _amount);
     }
 }
